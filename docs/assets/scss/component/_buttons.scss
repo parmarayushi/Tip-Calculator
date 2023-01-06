@@ -1,0 +1,8 @@
+// Button styles goes here
+.reset-btn {
+    background-color: $success;
+
+    &:hover {
+        background-color: $primary;
+    }
+}

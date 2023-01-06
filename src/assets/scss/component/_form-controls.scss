@@ -1,0 +1,46 @@
+//remove arrows in input type number.
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input {
+    border: 1px solid $light;
+
+    &:focus {
+        border: 1px solid $info;
+        box-shadow: none;
+    }
+}
+
+.calculator-wrapper {
+    height: 100%;
+
+    @media (min-width: 576px) {
+        height: auto;
+    }
+
+    .radioChecked {
+        ~.tip-label {
+            background-color: $secondary;
+            color: white;
+
+            &:hover {
+                background-color: $info;
+                color: $secondary;
+            }
+        }
+
+        &:checked {
+            ~.tip-label {
+                background-color: $success;
+                color: $secondary;
+            }
+        }
+    }
+}
+
+.logo {
+    @include position(absolute, auto, auto, 18px, 14px);
+}

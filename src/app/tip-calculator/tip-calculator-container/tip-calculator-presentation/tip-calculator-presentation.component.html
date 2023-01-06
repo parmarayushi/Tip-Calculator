@@ -1,0 +1,102 @@
+<section class="bg-primary d-flex flex-column justify-content-center h-100">
+    <div class="d-flex flex-column justify-content-center align-items-center h-100">
+        <header class="mb-5 mt-5 mt-sm-0">
+            <img src="assets/images/logo.svg" alt="logo">
+        </header>
+        <form class="calculator-wrapper mt-0 mt-sm-5" [formGroup]="tipCalculatorForm">
+            <div class="row bg-white rounded-5 p-5 h-100">
+                <div class="col-12 col-sm-6 px-0 pe-sm-5">
+                    <div class="position-relative">
+                        <label for="bill" class="text-muted fw-bold pb-2">Bill</label>
+                        <input type="number"
+                            class="input form-control bg-light text-end text-secondary fw-bolder fs-4 ps-5"
+                            formControlName="bill" placeholder="0">
+                        <span class="icon-icon-dollar logo"></span>
+                    </div>
+                    <div class="pt-4">
+                        <label for="tip" class="text-muted fw-bold pb-2">Select Tip %</label>
+                        <div class="row g-3">
+                            <div class="col-6 col-sm-4">
+                                <input type="radio" id="tip5" name="tip" value="5" class="d-none radioChecked"
+                                    formControlName="tip">
+                                <label class="tip-label text-center rounded fs-4 fw-bold w-100 p-2 cursor-pointer"
+                                    for="tip5">5%</label>
+                            </div>
+                            <div class="col-6 col-sm-4">
+                                <input type="radio" id="tip10" name="tip" value="10" class="d-none radioChecked"
+                                    formControlName="tip">
+                                <label class="tip-label text-center rounded fs-4 fw-bold w-100 p-2 cursor-pointer"
+                                    for="tip10">10%</label>
+                            </div>
+                            <div class="col-6 col-sm-4">
+                                <input type="radio" id="tip15" name="tip" value="15" class="d-none radioChecked"
+                                    formControlName="tip">
+                                <label class="tip-label text-center rounded fs-4 fw-bold w-100 p-2 cursor-pointer"
+                                    for="tip15">15%</label>
+                            </div>
+                            <div class="col-6 col-sm-4">
+                                <input type="radio" id="tip25" name="tip" value="25" class="d-none radioChecked"
+                                    formControlName="tip">
+                                <label class="tip-label text-center rounded fs-4 fw-bold w-100 p-2 cursor-pointer"
+                                    for="tip25">25%</label>
+                            </div>
+                            <div class="col-6 col-sm-4">
+                                <input type="radio" id="tip50" name="tip" value="50" class="d-none radioChecked"
+                                    formControlName="tip">
+                                <label class="tip-label text-center rounded fs-4 fw-bold w-100 p-2 cursor-pointer"
+                                    for="tip50">50%</label>
+                            </div>
+                            <div class="col-6 col-sm-4">
+                                <input type="number" name="custom" placeholder="Custom" formControlName="tip"
+                                    class="input form-control bg-light rounded text-end text-secondary w-100 fw-bolder fs-4 p-2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="position-relative pt-4">
+                        <div class="d-flex justify-content-between align-items-center pb-2">
+                            <label for="noOfPeople" class="text-muted fw-bold">No of People</label>
+                            <div *ngIf="noOfPeople === 0 ? true : false">
+                                <p class="text-danger fw-bold mb-0" [ngClass]="noOfPeople > 0 ? 'd-none' :'d-block' ">
+                                    Can't
+                                    be zero</p>
+                            </div>
+                        </div>
+
+                        <input type="number"
+                            class="input form-control bg-light text-end text-secondary fw-bolder fs-4 ps-5"
+                            formControlName="noOfPeople" placeholder="0">
+                        <span class="icon-icon-person logo"></span>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 px-0 pt-4 pt-sm-0">
+                    <div class="card d-flex justify-content-between rounded-4 bg-secondary h-100 p-4">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex flex-column text-white">
+                                    <label for="tip-amount" class="fw-bold">Tip Amount</label>
+                                    <label for="person" class="text-muted fw-bold">/ person</label>
+                                </div>
+                                <div class="text-truncate">
+                                    <span class="fs-1 fw-bold text-success">$ {{tipAmountPerPerson.toFixed(2)}}</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center pt-4">
+                                <div class="d-flex flex-column text-white">
+                                    <label for="tip-amount" class="fw-bold">Total</label>
+                                    <label for="person" class="text-muted fw-bold">/ person</label>
+                                </div>
+                                <div class="text-truncate">
+                                    <span class="fs-1 fw-bold text-success">$ {{totalPerPerson.toFixed(2)}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-4 pt-sm-0">
+                            <button type="button" class="reset-btn text-secondary fw-bold rounded-2 border-0 w-100 p-2"
+                                (click)="onReset()">RESET</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
